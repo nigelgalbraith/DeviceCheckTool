@@ -1,0 +1,11 @@
+services:
+  device-checkup-tool:
+    build: .
+    container_name: device-checkup-tool
+    user: "1000:1000"
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./public/data:/app/public/data
+      - ./backups:/app/backups
+    restart: unless-stopped

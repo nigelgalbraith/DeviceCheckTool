@@ -1,0 +1,695 @@
+{
+  "id": "windows-asus",
+  "title": "ASUS Windows Device Check",
+  "description": "Generic device check for ASUS Windows computers.",
+  "categories": [
+    {
+      "id": "system",
+      "title": "System",
+      "checks": [
+        {
+          "id": "os_version",
+          "label": "OS Version",
+          "type": "text",
+          "allowNA": false,
+          "weight": 0
+        },
+        {
+          "id": "windows_activated",
+          "label": "Windows Activated",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 0,
+              "issue": "Windows is not activated.",
+              "recommendation": "Activate Windows with a valid licence."
+            }
+          }
+        },
+        {
+          "id": "myasus_checked",
+          "label": "MyASUS Checked",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 75
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "storage",
+      "title": "Storage",
+      "checks": [
+        {
+          "id": "storage_used",
+          "label": "Storage Used",
+          "type": "percentage",
+          "unit": "%",
+          "allowNA": false,
+          "weight": 1,
+          "rules": [
+            {
+              "min": 0,
+              "max": 74,
+              "score": 100
+            },
+            {
+              "min": 75,
+              "max": 84,
+              "score": 75,
+              "issue": "Storage usage is becoming high.",
+              "recommendation": "Consider freeing unused files and applications."
+            },
+            {
+              "min": 85,
+              "max": 94,
+              "score": 40,
+              "issue": "Storage usage is high.",
+              "recommendation": "Free up storage or move data to another drive."
+            },
+            {
+              "min": 95,
+              "max": 100,
+              "score": 10,
+              "issue": "Storage is critically full.",
+              "recommendation": "Free storage as soon as possible."
+            }
+          ]
+        },
+        {
+          "id": "free_storage",
+          "label": "Free Storage",
+          "type": "number",
+          "unit": "GB",
+          "allowNA": false,
+          "weight": 1,
+          "rules": [
+            {
+              "min": 50,
+              "score": 100
+            },
+            {
+              "min": 20,
+              "max": 49,
+              "score": 70,
+              "issue": "Free storage is limited.",
+              "recommendation": "Remove unused files or applications before storage becomes constrained."
+            },
+            {
+              "min": 0,
+              "max": 19,
+              "score": 30,
+              "issue": "Free storage is low.",
+              "recommendation": "Free up storage before returning the device to use."
+            }
+          ]
+        },
+        {
+          "id": "drive_condition",
+          "label": "Drive Condition",
+          "type": "condition",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "excellent": {
+              "score": 100
+            },
+            "good": {
+              "score": 85
+            },
+            "fair": {
+              "score": 60,
+              "issue": "Drive condition shows visible wear.",
+              "recommendation": "Back up important data and investigate storage health."
+            },
+            "poor": {
+              "score": 20,
+              "issue": "Drive condition is in poor condition.",
+              "recommendation": "Back up important data and investigate storage health."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "title": "Memory",
+      "checks": [
+        {
+          "id": "installed_memory",
+          "label": "Installed Memory",
+          "type": "number",
+          "unit": "GB",
+          "allowNA": false,
+          "weight": 1,
+          "rules": [
+            {
+              "min": 16,
+              "score": 100
+            },
+            {
+              "min": 8,
+              "max": 15,
+              "score": 85
+            },
+            {
+              "min": 4,
+              "max": 7,
+              "score": 55,
+              "issue": "Installed memory is limited.",
+              "recommendation": "Consider a memory upgrade if the device feels slow under normal use."
+            },
+            {
+              "min": 0,
+              "max": 3,
+              "score": 20,
+              "issue": "Installed memory is very low.",
+              "recommendation": "Upgrade memory or limit the device to light use."
+            }
+          ]
+        },
+        {
+          "id": "memory_usage",
+          "label": "Memory Usage",
+          "type": "percentage",
+          "unit": "%",
+          "allowNA": false,
+          "weight": 1,
+          "rules": [
+            {
+              "min": 0,
+              "max": 74,
+              "score": 100
+            },
+            {
+              "min": 75,
+              "max": 89,
+              "score": 65,
+              "issue": "Memory usage is high.",
+              "recommendation": "Review startup applications and background processes."
+            },
+            {
+              "min": 90,
+              "max": 100,
+              "score": 30,
+              "issue": "Memory usage is very high.",
+              "recommendation": "Close unnecessary applications or increase installed memory."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "battery",
+      "title": "Battery",
+      "checks": [
+        {
+          "id": "battery_capacity",
+          "label": "Battery Capacity",
+          "type": "percentage",
+          "unit": "%",
+          "allowNA": true,
+          "weight": 1,
+          "rules": [
+            {
+              "min": 90,
+              "max": 100,
+              "score": 100
+            },
+            {
+              "min": 80,
+              "max": 89,
+              "score": 85
+            },
+            {
+              "min": 70,
+              "max": 79,
+              "score": 60,
+              "issue": "Battery capacity is reduced.",
+              "recommendation": "Monitor runtime and charging behaviour."
+            },
+            {
+              "min": 60,
+              "max": 69,
+              "score": 35,
+              "issue": "Battery capacity is significantly reduced.",
+              "recommendation": "Consider battery replacement if runtime is no longer adequate."
+            },
+            {
+              "min": 0,
+              "max": 59,
+              "score": 10,
+              "issue": "Battery capacity is poor.",
+              "recommendation": "Replace the battery if practical."
+            }
+          ]
+        },
+        {
+          "id": "battery_charging",
+          "label": "Battery Charging",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Battery charging did not pass testing.",
+              "recommendation": "Check the charger, battery, and charging circuit."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "updates",
+      "title": "Updates",
+      "checks": [
+        {
+          "id": "windows_updates_installed",
+          "label": "Windows Updates Installed",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 0,
+              "issue": "Operating system updates are outstanding.",
+              "recommendation": "Install available system updates and restart the device."
+            }
+          }
+        },
+        {
+          "id": "driver_updates_current",
+          "label": "Driver Updates Current",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 40,
+              "issue": "Driver updates may be outstanding.",
+              "recommendation": "Install available driver or firmware updates from a trusted source."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "security",
+      "title": "Security",
+      "checks": [
+        {
+          "id": "antivirus_enabled",
+          "label": "Antivirus Enabled",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 0,
+              "issue": "Antivirus protection is not enabled.",
+              "recommendation": "Enable suitable antivirus protection."
+            }
+          }
+        },
+        {
+          "id": "firewall_enabled",
+          "label": "Firewall Enabled",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": {
+              "score": 100
+            },
+            "no": {
+              "score": 0,
+              "issue": "Firewall protection is not enabled.",
+              "recommendation": "Enable the firewall before returning the device to use."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "display",
+      "title": "Display",
+      "checks": [
+        {
+          "id": "display_condition",
+          "label": "Display Condition",
+          "type": "condition",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "excellent": {
+              "score": 100
+            },
+            "good": {
+              "score": 85
+            },
+            "fair": {
+              "score": 60,
+              "issue": "Display condition shows visible wear.",
+              "recommendation": "Record display wear and repair if usability is affected."
+            },
+            "poor": {
+              "score": 20,
+              "issue": "Display condition is in poor condition.",
+              "recommendation": "Record display wear and repair if usability is affected."
+            }
+          }
+        },
+        {
+          "id": "dead_pixels",
+          "label": "Dead Pixels",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Dead pixels or display defects were found.",
+              "recommendation": "Document the display defect and repair if needed."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "input_devices",
+      "title": "Input Devices",
+      "checks": [
+        {
+          "id": "keyboard",
+          "label": "Keyboard",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Keyboard did not pass testing.",
+              "recommendation": "Clean, repair, or replace the keyboard if keys are unreliable."
+            }
+          }
+        },
+        {
+          "id": "mouse_trackpad",
+          "label": "Mouse / Trackpad",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Mouse or trackpad did not pass testing.",
+              "recommendation": "Repair or replace the pointing device if input is unreliable."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "camera",
+      "title": "Camera",
+      "checks": [
+        {
+          "id": "camera",
+          "label": "Camera",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Camera did not pass testing.",
+              "recommendation": "Test camera permissions and hardware before handover."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "audio",
+      "title": "Audio",
+      "checks": [
+        {
+          "id": "speakers",
+          "label": "Speakers",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Speakers did not pass testing.",
+              "recommendation": "Repair audio output if sound remains unreliable."
+            }
+          }
+        },
+        {
+          "id": "microphone",
+          "label": "Microphone",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Microphone did not pass testing.",
+              "recommendation": "Check microphone settings and hardware."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "connectivity",
+      "title": "Connectivity",
+      "checks": [
+        {
+          "id": "wifi",
+          "label": "Wi-Fi",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Wi-Fi did not pass testing.",
+              "recommendation": "Check wireless settings and adapter hardware."
+            }
+          }
+        },
+        {
+          "id": "bluetooth",
+          "label": "Bluetooth",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Bluetooth did not pass testing.",
+              "recommendation": "Check Bluetooth settings and adapter hardware."
+            }
+          }
+        },
+        {
+          "id": "ethernet",
+          "label": "Ethernet",
+          "type": "pass_fail",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Ethernet did not pass testing.",
+              "recommendation": "Check the network port or adapter if wired networking is required."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "ports",
+      "title": "Ports",
+      "checks": [
+        {
+          "id": "usb_ports",
+          "label": "USB Ports",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "USB Ports did not pass testing.",
+              "recommendation": "Inspect and repair the connector if it is unreliable."
+            }
+          }
+        },
+        {
+          "id": "charging_port_power_connector",
+          "label": "Charging Port / Power Connector",
+          "type": "pass_fail",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "pass": {
+              "score": 100
+            },
+            "fail": {
+              "score": 0,
+              "issue": "Charging Port / Power Connector did not pass testing.",
+              "recommendation": "Inspect and repair the connector if it is unreliable."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "physical_condition",
+      "title": "Physical Condition",
+      "checks": [
+        {
+          "id": "case_condition",
+          "label": "Case Condition",
+          "type": "condition",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "excellent": {
+              "score": 100
+            },
+            "good": {
+              "score": 85
+            },
+            "fair": {
+              "score": 60,
+              "issue": "Case condition shows visible wear.",
+              "recommendation": "Record case damage and repair if it affects safe use."
+            },
+            "poor": {
+              "score": 20,
+              "issue": "Case condition is in poor condition.",
+              "recommendation": "Record case damage and repair if it affects safe use."
+            }
+          }
+        },
+        {
+          "id": "screen_condition",
+          "label": "Screen Condition",
+          "type": "condition",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "excellent": {
+              "score": 100
+            },
+            "good": {
+              "score": 85
+            },
+            "fair": {
+              "score": 60,
+              "issue": "Screen condition shows visible wear.",
+              "recommendation": "Record screen wear and repair if usability is affected."
+            },
+            "poor": {
+              "score": 20,
+              "issue": "Screen condition is in poor condition.",
+              "recommendation": "Record screen wear and repair if usability is affected."
+            }
+          }
+        },
+        {
+          "id": "hinges",
+          "label": "Hinges",
+          "type": "condition",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "excellent": {
+              "score": 100
+            },
+            "good": {
+              "score": 85
+            },
+            "fair": {
+              "score": 60,
+              "issue": "Hinge condition shows visible wear.",
+              "recommendation": "Repair loose or damaged hinges if they affect safe use."
+            },
+            "poor": {
+              "score": 20,
+              "issue": "Hinge condition is in poor condition.",
+              "recommendation": "Repair loose or damaged hinges if they affect safe use."
+            }
+          }
+        },
+        {
+          "id": "notes",
+          "label": "Notes",
+          "type": "text",
+          "allowNA": false,
+          "weight": 0
+        }
+      ]
+    }
+  ]
+}

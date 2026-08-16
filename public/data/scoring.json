@@ -1,0 +1,37 @@
+[
+  {
+    "color": "#2e7d32",
+    "minScore": 90,
+    "maxScore": 100,
+    "message": "Excellent overall device condition.",
+    "title": "Excellent"
+  },
+  {
+    "color": "#558b2f",
+    "minScore": 75,
+    "maxScore": 89,
+    "message": "Good overall device condition with only minor concerns.",
+    "title": "Good"
+  },
+  {
+    "color": "#f9a825",
+    "minScore": 50,
+    "maxScore": 74,
+    "message": "Fair overall device condition. Some areas should be reviewed.",
+    "title": "Fair"
+  },
+  {
+    "color": "#ef6c00",
+    "minScore": 25,
+    "maxScore": 49,
+    "message": "Poor overall device condition. Several areas need attention.",
+    "title": "Poor"
+  },
+  {
+    "color": "#c62828",
+    "minScore": 0,
+    "maxScore": 24,
+    "message": "Critical overall device condition. Significant issues were identified.",
+    "title": "Critical"
+  }
+]

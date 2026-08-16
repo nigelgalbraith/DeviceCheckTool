@@ -1,0 +1,806 @@
+/* =========================
+   Theme Tokens
+   ========================= */
+:root {
+  --bg: #0b0f17;
+  --surface: #111827;
+  --surface-raised: #1a2232;
+  --surface-pressed: #0e1524;
+  --surface-button: #223044;
+  --surface-button-muted: #1e293b;
+  --text: #e5e7eb;
+  --text-strong: #ffffff;
+  --text-muted: #9ca3af;
+  --text-soft: #e5e5e5;
+  --text-inverse: #071018;
+  --border: #1f2937;
+  --accent: #06b6d4;
+  --shadow-card: 0 6px 14px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 10px 20px rgba(0, 0, 0, 0.45);
+  --success: #2e7d32;
+  --danger: #c62828;
+  --warning: #ef6c00;
+  }
+
+html[data-theme="light"] {
+  --bg: #eef2f7;
+  --surface: #ffffff;
+  --surface-raised: #dde6f2;
+  --surface-pressed: #cbd5e1;
+  --surface-button: #b6c2d1;
+  --surface-button-muted: #e2e8f0;
+  --text: #0b0f17;
+  --text-strong: #000000;
+  --text-muted: #4b5563;
+  --text-soft: #1f2937;
+  --text-inverse: #ffffff;
+  --border: #9aa4b2;
+  --accent: #2563eb;
+  --shadow-card: 0 6px 14px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 10px 20px rgba(0, 0, 0, 0.12);
+  --success: #2e7d32;
+  --danger: #c62828;
+  --warning: #ef6c00;
+}
+
+/* =========================
+   Base / Reset
+   ========================= */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+/* =========================
+   App Layout
+   ========================= */
+.app {
+  max-width: min(110rem, 96vw);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.split {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* =========================
+   Pane Shell (Shared)
+   ========================= */
+.pane {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  width: 95%;
+  margin: 0 auto;
+  box-shadow: var(--shadow-card);
+}
+
+.pane h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-strong);
+}
+
+/* =========================
+   Pane Content: Intro Text
+   ========================= */
+.intro-text {
+  margin: 0.75rem auto 1rem;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+.intro-text p { margin: 0; }
+
+
+/* =========================
+   Pane Content: Risk Tables 
+   ========================= */
+.pane-host--risk-details .rd-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.pane-host--risk-details .rd-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pane-host--risk-details .rd-label {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-table .rd-label {
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-details .rd-input,
+.pane-host--risk-details .rd-textarea,
+.pane-host--risk-table .rd-input,
+.pane-host--risk-table .rd-textarea {
+  width: 100%;
+  background: var(--surface-raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+}
+
+.pane-host--risk-details .rd-textarea,
+.pane-host--risk-table .rd-textarea {
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.pane-host--risk-table .dc-check-section {
+  border-top: 1px solid var(--border);
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.pane-host--risk-table .dc-check-section:first-of-type {
+  border-top: 0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.pane-host--risk-table .dc-section-title {
+  margin: 0 0 0.85rem;
+  text-transform: uppercase;
+}
+
+.pane-host--risk-table .dc-check-form {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.pane-host--risk-table .dc-check-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pane-host--risk-table .dc-value-control {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.pane-host--risk-table .dc-value-control .rd-input {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pane-host--risk-table .dc-unit {
+  color: var(--text-strong);
+  font-weight: 700;
+  min-width: 2.5rem;
+}
+
+.pane-host--risk-table .rt-title,
+.pane-host--risk-summary .rt-title {
+  margin: 0 0 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-table .rt-control,
+.pane-host--risk-table .rt-riskScore {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pane-host--risk-table .rt-status {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pane-host--risk-table .rt-status .rt-radio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  width: 90px;
+  margin: 0.2rem auto;
+  text-align: left;
+}
+
+.pane .rt-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.pane-host--risk-table .rt-title,
+.pane-host--risk-summary .rt-title,
+.pane-host--risk-review-action .rt-title,
+.pane-host--risk-export .rt-title,
+.pane-host--risk-definitions .rt-title,
+.pane-host--risk-definitions .rt-group-title,
+.pane-host--risk-definitions .rt-subtitle {
+  text-align: center;
+}
+
+.pane .rt-table th,
+.pane .rt-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 0.85rem 0.75rem;
+  vertical-align: top;
+  justify-content: center;
+}
+
+.pane .rt-table th {
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-strong);
+  background: var(--surface-raised);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pane-host--risk-table .rt-control { 
+  font-weight: 700; 
+}
+
+.pane-host--risk-table .rt-status { min-width: 170px; }
+
+.pane-host--risk-table .rt-radio {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-right: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pane-host--risk-table .rt-radio input { transform: translateY(1px); }
+
+.pane-host--risk-table .rt-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.pane-host--risk-table .rt-strike {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  opacity: 0.9;
+}
+
+.pane-host--risk-table .rt-error {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--surface-pressed);
+  color: var(--text);
+}
+
+.pane-host--risk-table .rt-table td,
+.pane-host--risk-table .rt-table th {
+  vertical-align: middle;
+}
+
+.pane-host--risk-table .rt-control,
+.pane-host--risk-table .rt-status,
+.pane-host--risk-table .rt-riskScore {
+  text-align: center;
+}
+
+.pane-host--risk-table .rt-riskFactors {
+  white-space: pre-line;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.pane-host--risk-table .rt-table {
+  table-layout: fixed;
+}
+
+.pane-host--risk-table .rt-table th:nth-child(1),
+.pane-host--risk-table .rt-table td:nth-child(1) {
+  width: 20%;
+}
+
+.pane-host--risk-table .rt-table th:nth-child(2),
+.pane-host--risk-table .rt-table td:nth-child(2) {
+  width: 10%;
+}
+
+.pane-host--risk-table .rt-table th:nth-child(3),
+.pane-host--risk-table .rt-table td:nth-child(3) {
+  width: 30%;
+}
+
+.pane-host--risk-table .rt-table th:nth-child(4),
+.pane-host--risk-table .rt-table td:nth-child(4) {
+  width: 30%;
+}
+
+.pane-host--risk-table .rt-table th:nth-child(5),
+.pane-host--risk-table .rt-table td:nth-child(5) {
+  width: 10%;
+}
+
+.pane-host--risk-summary .rt-table th,
+.pane-host--risk-summary .rt-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pane-host--risk-summary .rs-total,
+.pane-host--risk-summary .rs-level {
+  font-size: 1.5em;
+} 
+
+.rt-riskScore {
+  white-space: nowrap;
+  text-align: right;
+  font-weight: 600;
+}
+
+.pane-host--risk-review-action .rra-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.pane-host--risk-review-action .rra-button {
+  min-width: 12rem;
+}
+.rt-riskFactors {
+  white-space: pre-line;
+}
+
+/* =========================
+   Pane Content: Risk Definitions
+   ========================= */
+.pane-host--risk-definitions .rt-table th:nth-child(1),
+.pane-host--risk-definitions .rt-table td:nth-child(1) {
+  width: 30%;
+  text-align: center;
+}
+
+.pane-host--risk-definitions .rt-table th:nth-child(2),
+.pane-host--risk-definitions .rt-table td:nth-child(2) {
+  width: 30%;
+  text-align: center;
+}
+
+.pane-host--risk-definitions .rt-table th:nth-child(3),
+.pane-host--risk-definitions .rt-table td:nth-child(3) {
+  width: 40%;
+}
+
+.pane-host--risk-definitions .rt-group-title {
+  background-color: var(--surface-button); 
+  padding: 1.2rem;
+  border-radius: 0.75rem;
+}
+
+.pane-host--risk-definitions .rt-subtitle {
+  background-color: var(--border); 
+  padding: 1.0rem;
+  border-radius: 0.75rem;
+}
+
+/* =========================
+   Pane Content: Risk Report
+   ========================= */
+.pane-host--risk-report .rr-details,
+.pane-host--risk-report .rr-summary,
+.pane-host--risk-report .rr-notes {
+  margin-bottom: 1rem;
+}
+
+.pane-host--risk-report .rr-detail-row,
+.pane-host--risk-report .rr-summary-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  align-items: start;
+}
+
+.pane-host--risk-report .rr-detail-label,
+.pane-host--risk-report .rr-summary-label {
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-report .rr-summary-value--level {
+  font-weight: 700;
+}
+
+.pane-host--risk-report .rr-table {
+  margin-bottom: 1rem;
+}
+
+.pane-host--risk-report .rr-check-groups {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pane-host--risk-report .rr-check-group {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.pane-host--risk-report .rr-check {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0;
+}
+
+.pane-host--risk-report .rr-check + .rr-check {
+  border-top: 1px solid var(--border);
+}
+
+.pane-host--risk-report .rr-check-title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 1rem;
+}
+
+.pane-host--risk-report .rr-check-value {
+  line-height: 1.45;
+}
+
+.pane-host--risk-report .rr-empty {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.pane-host--risk-report .rr-control,
+.pane-host--risk-report .rr-status,
+.pane-host--risk-report .rr-risk-score {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pane-host--risk-report .rr-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.pane-host--risk-report .rr-section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-report .rr-notes-text {
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.rr-risk-weight {
+  font-weight: 700;
+  color: var(--danger);
+  margin-bottom: 0.35rem;
+}
+
+/* =========================
+   Export Actions
+   ========================= */
+.pane-host--risk-export .re-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.pane-host--risk-export .re-status {
+  margin-top: 1rem;
+}
+
+.re-button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  background: var(--surface-button);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.re-button:hover {
+  background: var(--surface-raised);
+}
+
+.re-button-muted {
+  background: var(--surface-button-muted);
+}
+
+.status-message {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  background: rgba(127, 127, 127, 0.08);
+  text-align: center;
+}
+
+.status-message--success {
+  border-color: var(--success);
+}
+
+.status-message--error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+/* =========================
+   Report Status Colors
+   ========================= */
+
+.rr-status-enabled {
+  color: var(--success);
+  font-weight: 700;
+}
+
+.rr-status-disabled {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.rr-row-disabled {
+  background: color-mix(in srgb, var(--danger) 8%, transparent);
+}
+
+/* =========================
+   Checks: Theme Toggle
+   ========================= */
+button {
+  background: var(--surface-button);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  padding: 0.5rem 0.875rem;
+  font-weight: 600;
+}
+
+button:hover { filter: brightness(1.08); }
+
+.theme-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1.5rem;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 0.6rem 0.9rem;
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0 12px var(--accent);
+  outline: none;
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.theme-toggle-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.theme-toggle-text {
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Navigation: Top Nav
+   ========================= */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  border-radius: 0.75rem;
+  width: 95%;
+}
+
+.nav .nav-links {
+  display: flex;
+  gap: 5rem;
+}
+
+.nav .nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  transition: 0.15s ease;
+  opacity: 0.9;
+}
+
+.nav .nav-links a:hover {
+  color: var(--text-strong);
+  opacity: 1;
+  filter: brightness(1.15);
+  border-color: var(--accent);
+  background: var(--surface-pressed);
+}
+
+.nav .nav-links a[aria-current="page"] {
+  border-color: var(--accent);
+  background: var(--surface-pressed);
+  opacity: 1;
+}
+
+/* =========================
+   Home: Device Checkup Card Grid
+   ========================= */
+.risk-analysis-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.risk-card {
+  display: block;
+  padding: 1.8rem;
+  border-radius: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.risk-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.risk-card h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1.6rem;
+  color: var(--text-strong);
+  text-align: center;
+}
+
+.risk-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  line-height: 1.4rem;
+  color: var(--text-soft);
+  text-align: center;
+}
+
+.risk-card a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.risk-card a:visited {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 600px) {
+  .split {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pane {
+    width: 100%;
+    padding: 0.75rem;
+  }
+
+  .pane-host--risk-report .rr-detail-row,
+  .pane-host--risk-report .rr-summary-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .pane-host--risk-export .re-actions {
+    flex-direction: column;
+  }
+
+  .app { padding: 0.5rem; }
+  
+}
+
+@media print {
+
+  /* Hide export buttons */
+  .pane-host--risk-export {
+    display: none;
+  }
+
+  /* Hide theme toggle */
+  .theme-toggle-wrapper,
+  .theme-toggle {
+    display: none;
+  }
+
+  /* Hide navigation */
+  nav,
+  .nav,
+  .app-nav {
+    display: none;
+  }
+
+  /* Clean print background */
+  body {
+    background: white;
+    color: black;
+  }
+
+  /* Remove card shadows for print */
+  .pane {
+    box-shadow: none;
+  }
+
+  /* Repeat table header on each page */
+  .rt-table thead {
+    display: table-header-group;
+  }
+
+  /* Prevent row splitting */
+  .rt-table tr {
+    page-break-inside: avoid;
+  }
+
+}

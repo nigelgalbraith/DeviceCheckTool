@@ -1,0 +1,103 @@
+{
+  "home": {
+    "title": "Device Checkup Tool",
+    "intro": [
+      "Choose a device platform to get started.",
+      "Select the manufacturer and then complete the device check."
+    ]
+  },
+  "categories": [
+    {
+      "id": "windows",
+      "title": "Windows",
+      "description": "Run a device check on a Windows computer.",
+      "intro": [
+        "Choose the manufacturer of the Windows device.",
+        "Then complete the device check."
+      ],
+      "devices": [
+        {
+          "id": "hp",
+          "path": "checkups/windows/hp.json"
+        },
+        {
+          "id": "dell",
+          "path": "checkups/windows/dell.json"
+        },
+        {
+          "id": "lenovo",
+          "path": "checkups/windows/lenovo.json"
+        },
+        {
+          "id": "acer",
+          "path": "checkups/windows/acer.json"
+        },
+        {
+          "id": "asus",
+          "path": "checkups/windows/asus.json"
+        },
+        {
+          "id": "other",
+          "path": "checkups/windows/other.json"
+        }
+      ]
+    },
+    {
+      "id": "macos",
+      "title": "macOS",
+      "description": "Run a device check on an Apple Mac.",
+      "intro": [
+        "Choose the Apple device check.",
+        "Then complete the device check."
+      ],
+      "devices": [
+        {
+          "id": "apple",
+          "path": "checkups/macos/apple.json"
+        }
+      ]
+    },
+    {
+      "id": "ios",
+      "title": "iPhone",
+      "description": "Run a device check on an Apple iPhone.",
+      "intro": [
+        "Choose the iPhone device check.",
+        "Then complete the device check."
+      ],
+      "devices": [
+        {
+          "id": "apple",
+          "path": "checkups/ios/apple.json"
+        }
+      ]
+    },
+    {
+      "id": "android",
+      "title": "Android",
+      "description": "Run a device check on an Android phone.",
+      "intro": [
+        "Choose the manufacturer of the Android device.",
+        "Then complete the device check."
+      ],
+      "devices": [
+        {
+          "id": "samsung",
+          "path": "checkups/android/samsung.json"
+        },
+        {
+          "id": "google",
+          "path": "checkups/android/google.json"
+        },
+        {
+          "id": "motorola",
+          "path": "checkups/android/motorola.json"
+        },
+        {
+          "id": "other",
+          "path": "checkups/android/other.json"
+        }
+      ]
+    }
+  ]
+}
