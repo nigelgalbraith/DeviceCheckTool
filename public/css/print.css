@@ -1,41 +1,160 @@
-/* Reuse report layout and theme styles in the print-only document. */
-@import url("./style.css");
-
-/* Hide export buttons */
-.pane-host--risk-export {
-  display: none;
+/* Standalone report document styles. */
+:root {
+  --surface: #ffffff;
+  --surface-raised: #f3f4f6;
+  --text-strong: #111111;
+  --text-muted: #4b5563;
+  --border: #b8bec8;
+  --success: #2e7d32;
+  --danger: #c62828;
 }
 
-/* Hide theme toggle */
-.theme-toggle-wrapper,
-.theme-toggle {
-  display: none;
-}
+* { box-sizing: border-box; }
 
-/* Hide navigation */
-nav,
-.nav,
-.app-nav {
-  display: none;
-}
-
-/* Clean print background */
+.print-document,
 body {
-  background: white;
-  color: black;
+  margin: 0;
+  background: #fff;
+  color: #111;
+  font-family: system-ui, sans-serif;
+  font-size: 1rem;
 }
 
-/* Remove card shadows for print */
+h1 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.print-page {
+  max-width: min(110rem, 96vw);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.print-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.print-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .pane {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.875rem;
+  width: 95%;
+  margin: 0 auto;
   box-shadow: none;
 }
 
-/* Repeat table header on each page */
-.rt-table thead {
-  display: table-header-group;
+.pane h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+  color: var(--text-strong);
 }
 
-/* Prevent row splitting */
-.rt-table tr {
-  page-break-inside: avoid;
+.pane-host--risk-report .rr-details,
+.pane-host--risk-report .rr-summary,
+.pane-host--risk-report .rr-notes {
+  margin-bottom: 1rem;
+}
+
+.pane-host--risk-report .rr-detail-row,
+.pane-host--risk-report .rr-summary-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.75rem;
+  padding: 0.45rem 0;
+  align-items: start;
+}
+
+.pane-host--risk-report .rr-detail-label,
+.pane-host--risk-report .rr-summary-label {
+  font-weight: 700;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-report .rr-summary-value--level {
+  font-weight: 700;
+}
+
+.pane-host--risk-report .rr-check-groups {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pane-host--risk-report .rr-check-group {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+.pane-host--risk-report .rr-check {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem 0;
+}
+
+.pane-host--risk-report .rr-check + .rr-check {
+  border-top: 1px solid var(--border);
+}
+
+.pane-host--risk-report .rr-check-title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 1rem;
+}
+
+.pane-host--risk-report .rr-check-value {
+  line-height: 1.45;
+}
+
+.pane-host--risk-report .rr-empty {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+.pane-host--risk-report .rr-section-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  color: var(--text-strong);
+}
+
+.pane-host--risk-report .rr-notes-text {
+  margin: 0;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 600px) {
+  .print-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .pane {
+    width: 95%;
+    padding: 0.75rem;
+  }
+
+  .pane-host--risk-report .rr-detail-row,
+  .pane-host--risk-report .rr-summary-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .print-page {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
 }

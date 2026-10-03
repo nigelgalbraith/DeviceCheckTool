@@ -131,3 +131,13 @@ export function computeMaxRiskScore(rows) {
   });
   return total;
 }
+
+/** Opens a complete printable HTML document in a clean window. */
+export function openPrintWindow(printableHtml) {
+  const printWindow = window.open("", "_blank");
+  if (!printWindow) return false;
+  printWindow.document.open();
+  printWindow.document.write(printableHtml);
+  printWindow.document.close();
+  return true;
+}

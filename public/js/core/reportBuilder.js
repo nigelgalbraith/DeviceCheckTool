@@ -199,3 +199,33 @@ export async function buildRiskReportData(serviceKey) {
     rows
   };
 }
+
+/** Builds a complete print document from the rendered report only. */
+export function buildPrintableReportHtml(reportNode, title) {
+  const escapedTitle = String(title || "Review Report").replace(/[&<>"']/g, function (character) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character];
+  });
+  return [
+    "<!doctype html>",
+    '<html lang="en">',
+    "<head>",
+    '<meta charset="utf-8">',
+    "<title>" + escapedTitle + "</title>",
+    '<meta name="viewport" content="width=device-width, initial-scale=1">',
+    '<link rel="stylesheet" href="css/print.css">',
+    "</head>",
+    '<body class="print-document">',
+    '<div class="print-page">',
+    '<header class="print-header"><h1>' + escapedTitle + "</h1></header>",
+    '<main class="print-content"><div>',
+    reportNode.outerHTML,
+    "</div></main></div>",
+    "<script>",
+    'window.addEventListener("afterprint", function () { window.close(); });',
+    'window.addEventListener("load", function () {',
+    "setTimeout(function () { window.focus(); window.print(); }, 300);",
+    "});",
+    "<\/script>",
+    "</body></html>"
+  ].join("");
+}

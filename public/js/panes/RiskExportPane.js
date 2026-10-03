@@ -1,12 +1,13 @@
 // IMPORTS
 import {
   el,
+  openPrintWindow,
   clearHost,
   addHostClasses,
   renderHostMessage,
   renderHostTitle
 } from "../core/helpers.js";
-import { openReportPrintWindow } from "../core/reportPrint.js";
+import { buildPrintableReportHtml } from "../core/reportBuilder.js";
 
 // STATE
 const EXPORT_CLASS = "pane-host--risk-export";
@@ -42,7 +43,8 @@ function initRiskExportPane(host, settings) {
   printButton.className = "re-button";
   printButton.textContent = "Print / Save PDF";
   const onPrintClick = function () {
-    if (!openReportPrintWindow(settings.reportNode, document.title)) {
+    const printableHtml = buildPrintableReportHtml(settings.reportNode, document.title);
+    if (!openPrintWindow(printableHtml)) {
       renderHostMessage(statusHost, "Allow pop-ups to open the print preview.", "status-message status-message--error");
     }
   };
