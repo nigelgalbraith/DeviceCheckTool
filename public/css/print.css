@@ -1,0 +1,41 @@
+/* Reuse report layout and theme styles in the print-only document. */
+@import url("./style.css");
+
+/* Hide export buttons */
+.pane-host--risk-export {
+  display: none;
+}
+
+/* Hide theme toggle */
+.theme-toggle-wrapper,
+.theme-toggle {
+  display: none;
+}
+
+/* Hide navigation */
+nav,
+.nav,
+.app-nav {
+  display: none;
+}
+
+/* Clean print background */
+body {
+  background: white;
+  color: black;
+}
+
+/* Remove card shadows for print */
+.pane {
+  box-shadow: none;
+}
+
+/* Repeat table header on each page */
+.rt-table thead {
+  display: table-header-group;
+}
+
+/* Prevent row splitting */
+.rt-table tr {
+  page-break-inside: avoid;
+}

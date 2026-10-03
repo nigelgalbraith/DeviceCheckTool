@@ -45,6 +45,7 @@ export async function initReviewPage() {
   const exportPane = buildRiskExportPane({
     id: "exportHost",
     backUrl: "index.html?page=checkup&service=" + encodeURIComponent(service),
+    reportNode: reportPane.node,
     reportText: buildRiskReportText(reportData)
   });
   reportHost.appendChild(reportPane.node);
