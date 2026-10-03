@@ -4,6 +4,7 @@ import { createEventBus } from "./eventBus.js";
 import { createPageLifecycle } from "./pageLifecycle.js";
 import { createSharedState } from "./sharedState.js";
 import { initThemeToggle } from "../themeToggle.js";
+import { buildFooterPane } from "../panes/FooterPane.js";
 
 // BUILD
 /** Clones initial state for runtime storage */
@@ -53,6 +54,9 @@ function createRuntimeState(initialState, events) {
 export function createPageRuntime({ pageTitle, activeNavKey, initialState }) {
   const lifecycle = createPageLifecycle();
   const shell = buildAppShell({ pageTitle, activeNavKey });
+  const footerPane = buildFooterPane();
+  shell.appRoot.appendChild(footerPane.node);
+  lifecycle.add(footerPane.destroy);
   const events = createEventBus();
   const state = createRuntimeState(initialState, events);
   const cleanupTheme = initThemeToggle(document);
