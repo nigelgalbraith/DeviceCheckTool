@@ -107,7 +107,7 @@ h1 {
    Pane Content: Intro Text
    ========================= */
 .intro-text {
-  width: 70%;
+  width: 95%;
   margin: 0.75rem auto 1rem;
   line-height: 1.5;
   opacity: 0.95;
@@ -645,7 +645,7 @@ button:hover { filter: brightness(1.08); }
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   border-radius: 0.75rem;
-  width: 70%;
+  width: 95%;
 }
 
 .nav .nav-links {
@@ -687,7 +687,7 @@ button:hover { filter: brightness(1.08); }
   gap: 1.6rem;
   margin-top: 2rem;
   width: 100%;
-  max-width: 70%;
+  max-width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -741,7 +741,7 @@ button:hover { filter: brightness(1.08); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 70%;
+  width: 95%;
   margin: 2rem auto;
   padding: 1.5rem;
   background: var(--surface);
@@ -792,7 +792,7 @@ button:hover { filter: brightness(1.08); }
   }
 
   .pane {
-    width: 100%;
+    width: 95%;
     padding: 0.75rem;
   }
 
@@ -815,13 +815,13 @@ button:hover { filter: brightness(1.08); }
   .nav,
   .intro-text,
   .risk-analysis-grid {
-    width: 100%;
+    width: 95%;
     max-width: none;
   }
 
   .footer {
     padding: 1rem;
-    width: 100%;
+    width: 95%;
   }
 
   .footer p {
