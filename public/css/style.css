@@ -107,6 +107,7 @@ h1 {
    Pane Content: Intro Text
    ========================= */
 .intro-text {
+  width: 70%;
   margin: 0.75rem auto 1rem;
   line-height: 1.5;
   opacity: 0.95;
@@ -644,7 +645,7 @@ button:hover { filter: brightness(1.08); }
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   border-radius: 0.75rem;
-  width: 95%;
+  width: 70%;
 }
 
 .nav .nav-links {
@@ -811,6 +812,8 @@ button:hover { filter: brightness(1.08); }
     padding: 0.5rem;
   }
 
+  .nav,
+  .intro-text,
   .risk-analysis-grid {
     width: 100%;
     max-width: none;
