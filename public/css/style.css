@@ -805,7 +805,16 @@ button:hover { filter: brightness(1.08); }
     flex-direction: column;
   }
 
-  .app { padding: 0.5rem; }
+  .app {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+
+  .risk-analysis-grid {
+    width: 100%;
+    max-width: none;
+  }
 
   .footer {
     padding: 1rem;
