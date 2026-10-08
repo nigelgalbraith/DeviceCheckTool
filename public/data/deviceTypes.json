@@ -37,6 +37,10 @@
           "path": "checkups/windows/asus.json"
         },
         {
+          "id": "general",
+          "path": "checkups/windows/general.json"
+        },
+        {
           "id": "other",
           "path": "checkups/windows/other.json"
         }

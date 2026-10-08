@@ -1,0 +1,213 @@
+
+{
+  "id": "general-computer",
+  "title": "General Computer Check",
+  "description": "Basic Windows hardware and functionality check.",
+  "categories": [
+    {
+      "id": "system",
+      "title": "System",
+      "checks": [
+        {
+          "id": "ram_size",
+          "label": "RAM Size",
+          "type": "number",
+          "unit": "GB",
+          "allowNA": false,
+          "weight": 0
+        },
+        {
+          "id": "hdd_size",
+          "label": "HDD / SSD Size",
+          "type": "number",
+          "unit": "GB",
+          "allowNA": false,
+          "weight": 0
+        },
+        {
+          "id": "hdd_health",
+          "label": "HDD / SSD Healthy",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "battery_health",
+          "label": "Battery Healthy",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "windows",
+      "title": "Windows",
+      "checks": [
+        {
+          "id": "updates",
+          "label": "Windows Updates Installed",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "drivers_installed",
+          "label": "All Drivers Installed",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "device_manager",
+          "label": "Device Manager No Issues",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "hardware",
+      "title": "Hardware",
+      "checks": [
+        {
+          "id": "keyboard",
+          "label": "Keyboard Works",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "mouse",
+          "label": "Mouse / Touchpad Works",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "display",
+          "label": "Display Works",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "usb",
+          "label": "USB Ports Work",
+          "type": "yes_no",
+          "allowNA": false,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "camera",
+          "label": "Camera Works",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "speakers",
+          "label": "Speakers Work",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "microphone",
+          "label": "Microphone Works",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "connectivity",
+      "title": "Connectivity",
+      "checks": [
+        {
+          "id": "wifi",
+          "label": "WiFi Works",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "ethernet",
+          "label": "Ethernet Works",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        },
+        {
+          "id": "bluetooth",
+          "label": "Bluetooth Works",
+          "type": "yes_no",
+          "allowNA": true,
+          "weight": 1,
+          "rules": {
+            "yes": { "score": 100 },
+            "no": { "score": 0 }
+          }
+        }
+      ]
+    }
+  ]
+}
