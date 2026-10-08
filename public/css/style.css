@@ -173,16 +173,24 @@ h1 {
 .pane-host--risk-table .dc-section-title {
   margin: 0 0 0.85rem;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .pane-host--risk-table .dc-check-form {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.85rem;
+}
+
+.pane-host--risk-table .dc-check-form > * {
+  flex: 1 1 calc((100% - 2 * 0.85rem) / 3);
+  min-width: 0;
 }
 
 .pane-host--risk-table .dc-check-field {
   display: grid;
   gap: 0.35rem;
+  text-align: center;
 }
 
 .pane-host--risk-table .dc-value-control {
@@ -804,6 +812,50 @@ button:hover { filter: brightness(1.08); }
 
   .pane-host--risk-export .re-actions {
     flex-direction: column;
+  }
+
+  .pane-host--risk-table .dc-check-form > * {
+  flex-basis: 100%;
+  }
+
+  .pane-host--risk-summary .rt-table,
+  .pane-host--risk-summary .rt-table tbody,
+  .pane-host--risk-summary .rt-table tr,
+  .pane-host--risk-summary .rt-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .pane-host--risk-summary .rt-table thead {
+    display: none;
+  }
+
+  .pane-host--risk-summary .rt-table td {
+    overflow-wrap: anywhere;
+  }
+
+  .pane-host--risk-summary .rt-table td::before {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--text-strong);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .pane-host--risk-summary .rt-table td:nth-child(1)::before {
+    content: "Device Check";
+  }
+
+  .pane-host--risk-summary .rt-table td:nth-child(2)::before {
+    content: "Device Status";
+  }
+
+  .pane-host--risk-summary .rt-table td:nth-child(3)::before {
+    content: "Device Score";
+  }
+
+  .pane-host--risk-summary .rt-table td:nth-child(4)::before {
+    content: "Summary";
   }
 
   .app {

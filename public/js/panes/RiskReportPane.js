@@ -69,8 +69,7 @@ function buildDetailsBlock(reportData) {
 /** Builds one completed check result */
 function buildCheckResult(rowData) {
   const item = el("article", "rr-check");
-  item.appendChild(el("h4", "rr-check-title", rowData.label || "-"));
-  item.appendChild(el("div", "rr-check-value", rowData.displayValueWithUnit || "-"));
+  item.appendChild(el("h4", "rr-check-value", `${rowData.label || "-"}: ${rowData.displayValueWithUnit || "-"}`));
   if (rowData.scoreText) {
     item.appendChild(buildDetailRow("Score", rowData.scoreText));
   }
