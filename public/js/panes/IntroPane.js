@@ -1,18 +1,14 @@
 // IMPORTS
-import { NOOP_PANE, addHostClasses } from "../core/helpers.js";
+import { NOOP_PANE, addHostClasses, renderTextArray } from "../core/helpers.js";
 
 // STATE
 const INTRO_CLASS = "intro-text";
 // BUILD
-/** Returns intro HTML for a given key */
-function getIntroHTML(settings) {
-  return String(settings.html || "");
-}
-
 
 /** Initializes the intro pane node */
 function initIntroPane(host, settings) {
-  host.innerHTML = getIntroHTML(settings) || "";
+  host.replaceChildren();
+  renderTextArray(host, settings.text || []);
   return NOOP_PANE;
 }
 

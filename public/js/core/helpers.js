@@ -95,6 +95,29 @@ export function titleCase(value) {
 }
 
 
+/** Renders an array of text as nothing, a paragraph, or a list */
+export function renderTextArray(host, items, className = "", listClassName = className) {
+  const values = Array.isArray(items) ? items : [];
+  if (!values.length) return null;
+  if (values.length === 1) {
+    const paragraph = document.createElement("p");
+    if (className) paragraph.className = className;
+    paragraph.textContent = values[0];
+    host.appendChild(paragraph);
+    return paragraph;
+  }
+  const list = document.createElement("ul");
+  if (listClassName) list.className = listClassName;
+  values.forEach(function (item) {
+    const listItem = document.createElement("li");
+    listItem.textContent = item;
+    list.appendChild(listItem);
+  });
+  host.appendChild(list);
+  return list;
+}
+
+
 /** Normalizes a status value to the supported set */
 export function normalizeStatus(value) {
   return value === "enabled" ? "enabled" : "disabled";

@@ -1,3 +1,4 @@
+
 // STATE
 const DATA_URLS = Object.freeze({
   riskTables: "data/deviceTypes.json",
@@ -71,7 +72,7 @@ function flattenDeviceChecks(categories) {
         deviceId,
         manufacturerId: deviceId,
         manufacturerTitle,
-        title: categoryTitle + " - " + manufacturerTitle,
+        title: manufacturerTitle,
         description: String(device?.description || "Run the " + manufacturerTitle + " device check."),
         path: String(device?.path || ""),
         link: "index.html?page=checkup&category=" + encodeURIComponent(categoryId) + "&device=" + encodeURIComponent(deviceId),
@@ -100,6 +101,7 @@ export async function loadRiskTableRegistry() {
       introHtml: registry?.home?.introHtml || introHtmlFromLines(registry?.home?.intro || [])
     },
     reference: registry?.reference || {},
+    search: registry?.search || {},
     categories,
     analyses: flattenDeviceChecks(categories)
   };

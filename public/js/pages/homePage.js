@@ -24,7 +24,7 @@ export async function initHomePage() {
   document.title = home.title || HOME_TITLE;
   const introSection = document.createElement("section");
   introSection.className = "intro-hero";
-  const introPane = buildIntroPane({ html: home.introHtml || "", className: "intro-text" }, api);
+  const introPane = buildIntroPane({ text: home.intro || [], className: "intro-text" }, api);
   const categories = (registry.categories || []).map((category) => ({
     id: category.id,
     title: category.title || category.id,

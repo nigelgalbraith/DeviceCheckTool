@@ -1,9 +1,31 @@
+
 {
   "home": {
     "title": "Device Checkup Tool",
     "intro": [
       "Choose a device platform to get started.",
       "Select the manufacturer and then complete the device check."
+    ]
+  },
+  "reference": {
+    "title": "Scoring Reference",
+    "intro": [
+      "Device Check scores are calculated from the rules defined on each individual check."
+    ],
+    "items": [
+      "Each applicable check receives a 0-100 score from its JSON rule.",
+      "Higher Device Scores are better.",
+      "Checks may have different weights.",
+      "N/A checks are excluded from scoring.",
+      "Unanswered checks are excluded until a valid value is entered.",
+      "Applicable check scores are combined with a weighted average.",
+      "The overall scoring configuration converts the final Device Score into a Device Status."
+    ]
+  },
+  "search": {
+    "title": "Search Device Checkups",
+    "intro": [
+      "Search all available device checkups by platform or manufacturer."
     ]
   },
   "categories": [

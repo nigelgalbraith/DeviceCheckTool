@@ -687,8 +687,33 @@ button:hover { filter: brightness(1.08); }
 }
 
 /* =========================
+   Search: Device Checkups
+   ========================= */
+.search-input {
+  display: block;
+  width: 95%;
+  margin: 1rem auto;
+  padding: 0.85rem 1rem;
+  background: var(--surface-raised);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 0.625rem;
+  font: inherit;
+}
+
+.search-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.search-results {
+  width: 100%;
+}
+
+/* =========================
    Home: Device Checkup Card Grid
    ========================= */
+
 .risk-analysis-grid {
   display: flex;
   flex-direction: column;

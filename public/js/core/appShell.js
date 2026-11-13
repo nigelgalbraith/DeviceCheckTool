@@ -1,3 +1,4 @@
+
 // STATE
 const APP_CLASS = "app";
 const HEADER_CLASS = "header-centered";
@@ -12,6 +13,7 @@ const NAV_CLASS = "nav";
 const NAV_LINKS_CLASS = "nav-links";
 const NAV_ITEMS = [
   { key: "home", label: "Main Menu", href: "index.html" },
+  { key: "search", label: "Search Device Checkups", href: "index.html?page=search" },
   { key: "reference", label: "Scoring Reference", href: "index.html?page=reference" }
 ];
 

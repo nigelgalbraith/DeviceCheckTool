@@ -42,7 +42,7 @@ export async function initCategoryPage() {
   document.title = displayName;
   const introSection = document.createElement("section");
   introSection.className = "intro-hero";
-  const introPane = buildIntroPane({ html: category.introHtml || "", className: "intro-text" }, api);
+  const introPane = buildIntroPane({ text: category.intro || [], className: "intro-text" }, api);
   const devices = (category.devices || []).map((device) => {
     const deviceId = String(device?.id || "").trim();
     const title = deviceTitle(deviceId);

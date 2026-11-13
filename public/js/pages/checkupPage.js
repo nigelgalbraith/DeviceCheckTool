@@ -58,11 +58,11 @@ export async function initCheckupPage() {
   }
   const entry = await loadRiskAnalysisEntry(service);
   const displayName = entry.title || (titleCase(service) + " Device Check");
-  const introHtml = entry.introHtml || "";
+  const intro = entry.intro || (entry.description ? [entry.description] : []);
   if (heading) heading.textContent = displayName;
   document.title = displayName;
   const introPane = buildIntroPane({
-    html: introHtml,
+    text: intro,
     className: "intro-text",
     id: "introHost"
   }, api);
