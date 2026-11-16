@@ -795,6 +795,15 @@ button:hover { filter: brightness(1.08); }
   opacity: 1;
 }
 
+
+/* =========================
+   Navigation: Mobile Hamburger
+   ========================= */
+.nav-hamburger {
+  display: none;
+}
+
+
 /* =========================
    Home: Device Checkup Card Grid
    ========================= */
@@ -851,6 +860,7 @@ button:hover { filter: brightness(1.08); }
   text-decoration: none !important;
 }
 
+
 /* =========================
    Responsive
    ========================= */
@@ -871,48 +881,39 @@ button:hover { filter: brightness(1.08); }
   }
 
   .app { padding: 0.5rem; }
-  
+
+  .nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-hamburger {
+    display: block;
+    align-self: center;
+    padding: 0.4rem 0.8rem;
+    font-size: 1.5rem;
+    color: var(--text);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 0.6rem;
+    cursor: pointer;
+  }
+
+  .nav .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    padding-top: 0.5rem;
+  }
+
+  .nav.menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav .nav-links a {
+    display: block;
+    text-align: center;
+  }
 }
 
-@media print {
-
-  /* Hide export buttons */
-  .pane-host--risk-export {
-    display: none;
-  }
-
-  /* Hide theme toggle */
-  .theme-toggle-wrapper,
-  .theme-toggle {
-    display: none;
-  }
-
-  /* Hide navigation */
-  nav,
-  .nav,
-  .app-nav {
-    display: none;
-  }
-
-  /* Clean print background */
-  body {
-    background: white;
-    color: black;
-  }
-
-  /* Remove card shadows for print */
-  .pane {
-    box-shadow: none;
-  }
-
-  /* Repeat table header on each page */
-  .rt-table thead {
-    display: table-header-group;
-  }
-
-  /* Prevent row splitting */
-  .rt-table tr {
-    page-break-inside: avoid;
-  }
-
-}

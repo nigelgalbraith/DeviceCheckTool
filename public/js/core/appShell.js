@@ -1,4 +1,7 @@
 
+ // IMPORTS
+import { el } from "./helpers.js";
+
 // STATE
 const APP_CLASS = "app";
 const HEADER_CLASS = "header-centered";
@@ -20,21 +23,15 @@ const NAV_ITEMS = [
 // BUILD
 /** Creates the shell theme toggle button */
 function createThemeToggle() {
-  const wrapper = document.createElement("div");
-  wrapper.className = THEME_TOGGLE_WRAPPER_CLASS;
-  const button = document.createElement("button");
-  button.className = THEME_TOGGLE_CLASS;
+  const wrapper = el("div", THEME_TOGGLE_WRAPPER_CLASS);
+  const button = el("button", THEME_TOGGLE_CLASS);
   button.type = "button";
   button.setAttribute("aria-label", "Toggle light/dark mode");
   button.setAttribute("aria-pressed", "false");
   button.title = "Toggle light/dark mode";
-  const icon = document.createElement("span");
-  icon.className = THEME_TOGGLE_ICON_CLASS;
+  const icon = el("span", THEME_TOGGLE_ICON_CLASS, "☾");
   icon.setAttribute("aria-hidden", "true");
-  icon.textContent = "☾";
-  const text = document.createElement("span");
-  text.className = THEME_TOGGLE_TEXT_CLASS;
-  text.textContent = "Theme";
+  const text = el("span", THEME_TOGGLE_TEXT_CLASS, "Theme");
   button.appendChild(icon);
   button.appendChild(text);
   wrapper.appendChild(button);
@@ -45,17 +42,31 @@ function createThemeToggle() {
 /** Creates the shell navigation for the active page */
 function createNav(activeNavKey) {
   if (!activeNavKey) return null;
-  const nav = document.createElement("nav");
-  nav.className = NAV_CLASS;
-  const links = document.createElement("div");
-  links.className = NAV_LINKS_CLASS;
+  const nav = el("nav", NAV_CLASS);
+  const links = el("div", NAV_LINKS_CLASS);
+  links.id = "mobile-nav-links";
   NAV_ITEMS.forEach(function (item) {
-    const link = document.createElement("a");
+    const link = el("a", "", item.label);
     link.href = item.href;
-    link.textContent = item.label;
     if (activeNavKey === item.key) link.setAttribute("aria-current", "page");
     links.appendChild(link);
   });
+  const hamburger = el("button", "nav-hamburger", "☰");
+  hamburger.type = "button";
+  hamburger.setAttribute("aria-label", "Toggle navigation");
+  hamburger.setAttribute("aria-controls", links.id);
+  hamburger.setAttribute("aria-expanded", "false");
+  hamburger.addEventListener("click", function () {
+    const isOpen = nav.classList.toggle("menu-open");
+    hamburger.setAttribute("aria-expanded", String(isOpen));
+  });
+  links.addEventListener("click", function (event) {
+    if (event.target.closest("a")) {
+      nav.classList.remove("menu-open");
+      hamburger.setAttribute("aria-expanded", "false");
+    }
+  });
+  nav.appendChild(hamburger);
   nav.appendChild(links);
   return nav;
 }
@@ -63,20 +74,16 @@ function createNav(activeNavKey) {
 
 /** Builds the application shell and mounts it into the app root */
 export function buildAppShell({ pageTitle, activeNavKey }) {
-  const appRoot = document.createElement("div");
-  appRoot.className = APP_CLASS;
-  const header = document.createElement("header");
-  header.className = HEADER_CLASS;
-  const heading = document.createElement("h1");
+  const appRoot = el("div", APP_CLASS);
+  const header = el("header", HEADER_CLASS);
+  const heading = el("h1", "", pageTitle || "Device Checkup");
   heading.id = PAGE_TITLE_ID;
-  heading.textContent = pageTitle || "Device Checkup";
   const themeHost = createThemeToggle();
   const nav = createNav(activeNavKey);
   header.appendChild(heading);
   header.appendChild(themeHost);
   if (nav) header.appendChild(nav);
-  const main = document.createElement("main");
-  main.className = MAIN_CLASS;
+  const main = el("main", MAIN_CLASS);
   main.id = MAIN_ID;
   appRoot.appendChild(header);
   appRoot.appendChild(main);
